@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1.proba-animacija-prsten</title>
+    <style>
+        #omotač{
+            width: 750px;
+            height: 750px;
+            background-color: black;
+            position: relative;
+            margin: 50px auto;
+        }
+        #prsten{
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+            position: absolute;
+            margin: 125px 125px;
+            animation: kružno 5s infinite linear;
+        }
+        #prsten::before{
+            content: "";
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+            position: absolute;
+            animation: kružno 5s infinite linear;            
+            filter: blur(30px);
+        }
+        #centar{
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);                                    
+        }
+        #centar::before, #centar::after{
+            content: "";
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            border-radius: 100%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+        #centar::before{
+            width: 400px;
+            height: 400px;
+            background-color: #050210;
+        }
+        #centar::after{
+            width: 400px;
+            height: 400px;
+            background-color: #333;
+            animation: nasumična-boja 1.5s ease-in-out infinite alternate;
+            animation-direction: normal;
+        }
+        @keyframes kružno{
+            from{
+                transform: rotate(0deg);                
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes nasumična-boja{
+            from{
+                width: 0px;
+                height: 0px;                
+            }
+            to {
+                width: 400px;
+                height: 400px;
+            }
+        }                                                
+    </style>
+</head>
+<body>
+<div id="omotač">
+    <div id="prsten">
+        <div id="centar"></div>
+    </div>
+</div>    
+</body>
+</html>
